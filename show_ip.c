@@ -1,5 +1,7 @@
+
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
@@ -10,6 +12,11 @@ int main(int argc, char *argv[]){
     struct addrinfo hints, *res, *p;
     int status;
     char ipstr[INET6_ADDRSTRLEN];
+    char hostname[INET6_ADDRSTRLEN];
+    
+    gethostname(hostname, INET6_ADDRSTRLEN);
+    
+    printf("hostname %s\n", hostname);
     
     if (argc != 2){
         fprintf(stderr, "usage: main hostname\n");
